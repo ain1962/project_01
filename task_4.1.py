@@ -28,7 +28,7 @@ import sqlite3
 # Создание таблицы Школы
 connection = sqlite3.connect('teachers.db')
 cursor = connection.cursor()
-query = """CREATE TABLE School (
+query = """CREATE TABLE Schools (
 School_Id INTEGER NOT NULL PRIMARY KEY,
 School_Name TEXT NOT NULL);"""
 cursor.execute(query)
@@ -127,11 +127,11 @@ def get_school_name(school_id):
   except (Exception, sqlite3.Error) as error:
     print ('Ошибка в получении данных ', error)
 
-def get_teacher_data(school_id):
+def get_Student_data(school_id):
   try:
     connection = get_connection()
     cursor = connection.cursor()
-    query = "SELECT * FROM Student WHERE School_Id = ?"
+    query = "SELECT * FROM Students WHERE School_Id = ?"
     cursor.execute(query,(school_id,))
     records = cursor.fetchall()
     for row in records:
